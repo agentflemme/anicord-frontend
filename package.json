@@ -19,5 +19,10 @@
 		"svelte-check": "^4.4.6",
 		"typescript": "^6.0.2",
 		"vite": "^8.0.7"
+	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.3.0",
+		"flyonui": "^2.4.1",
+		"tailwindcss": "^4.3.0"
 	}
 }
