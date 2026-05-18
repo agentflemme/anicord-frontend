@@ -2,6 +2,45 @@
 @import "flyonui/variants.css";
 @plugin "@iconify/tailwind4";
 @import 'tailwindcss';
-@plugin "flyonui" {
-  themes: all;
+
+/*
+using https://rosepinetheme.com my beloved for now
+couldn't be bothered to come up with my own colourscheme
+but if people don't like it i will change it
+*/
+@plugin "flyonui" { themes: rosepine --default; }
+@plugin "flyonui/theme" {
+  name: "rosepine";
+  default: true;
+  color-scheme: "rosepine";
+
+  --color-base-100: #191724;
+  --color-base-200: #1f1d2e;
+  --color-base-300: #26233a;
+  --color-base-content: #e0def4;
+  --color-primary: #ebbcba;
+  --color-primary-content: #26233a;
+  --color-secondary: #31748f;
+  --color-secondary-content: #e0def4;
+  --color-accent: #f6c177;
+  --color-accent-content: #26233a;
+  --color-neutral: #9ccfd8;
+  --color-neutral-content: #26233a;
+  --color-info: #c4a7e7;
+  --color-info-content: #26233a;
+  --color-success: #31748f;
+  --color-success-content: #e0def4;
+  --color-warning: #f6c177;
+  --color-warning-content: #26233a;
+  --color-error: #eb6f92;
+  --color-error-content: #26233a;
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.21875rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
 }
