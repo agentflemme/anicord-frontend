@@ -1,3 +1,3 @@
 export const app = {
-  name: "Anicord Events Server",
+	name: 'Anicord Events Server'
 };

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { app } from "$lib/config";
+	import { app } from '$lib/config';
 </script>
 
-<footer class="w-full text-center text-sm opacity-60 py-6 border-t border-base-300">
-    {app.name} © {new Date().getFullYear()}
+<footer class="text-sm py-6 border-base-300 w-full border-t text-center opacity-60">
+	{app.name} © {new Date().getFullYear()}
 </footer>

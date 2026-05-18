@@ -1,2 +1,2 @@
 // FlyonUI
-import("flyonui/flyonui");
+import('flyonui/flyonui');
