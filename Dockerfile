@@ -1,10 +1,8 @@
 # Stage 1: Install dependencies
 FROM node:22-alpine AS deps
 WORKDIR /app
-COPY package.json ./
-COPY pnpm-lock.yaml ./
-RUN npm install -g pnpm
-RUN pnpm install
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # Stage 2: Build the app
 FROM node:22-alpine AS builder
@@ -21,13 +19,16 @@ ENV NODE_ENV=production
 ARG GIT_COMMIT
 ENV GIT_COMMIT=$GIT_COMMIT
 RUN test -n "$GIT_COMMIT" || \
-    (echo "ERROR: GIT_COMMIT build arg is required. Build with: docker compose build --build-arg GIT_COMMIT=\$(git rev-parse HEAD)" >&2; exit 1)
+    (echo "ERROR: GIT_COMMIT build arg is required. Build with: docker build --build-arg GIT_COMMIT=\$(git rev-parse HEAD) ." >&2; exit 1)
 
-# Copy only the necessary files from the builder
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
-COPY --from=deps /app/package.json ./
+# Copy built application and package files from builder
+COPY --from=builder /app/build ./build
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/package-lock.json ./package-lock.json
+
+# Install only production dependencies
+RUN npm ci --omit=dev
 
 EXPOSE 3000
 ENV PORT 3000
-CMD ["npm", "start"]
+CMD ["node", "build/index.js"]
