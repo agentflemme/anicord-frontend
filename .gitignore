@@ -22,10 +22,8 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# Nix
-flake.nix
-flake.lock
-shell.nix
+# Direnv
+.direnv
 
 # Vscode
 .vscode/

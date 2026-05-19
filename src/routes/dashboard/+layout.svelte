@@ -1,7 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import { afterNavigate } from '$app/navigation';
-	import '../app.css';
+	import '../../app.css';
 	let { children } = $props();
 
 	afterNavigate(() => {
